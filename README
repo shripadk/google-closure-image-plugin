@@ -1,0 +1,51 @@
+Copy all files to your CLOSURE_HOME/goog/editor/plugins directory.
+
+Require the plugins:
+goog.require('goog.editor.plugins.ImagePlugin');
+goog.require('goog.editor.plugins.ImageDialogPlugin');
+
+
+Then register the plugins:
+    myField.registerPlugin(new goog.editor.plugins.ImagePlugin());
+    myField.registerPlugin(new goog.editor.plugins.ImageDialogPlugin());
+
+You can use the Image button from Google, or your own custom button. I use the Image button from Google.
+    var buttons = [
+      	goog.editor.Command.BOLD,
+	    goog.editor.Command.ITALIC,
+	    goog.editor.Command.UNDERLINE,
+	    goog.editor.Command.FONT_COLOR,
+	    goog.editor.Command.BACKGROUND_COLOR,
+	    goog.editor.Command.FONT_FACE,
+	    goog.editor.Command.FONT_SIZE,
+	    goog.editor.Command.LINK,
+	    goog.editor.Command.UNDO,
+	    goog.editor.Command.REDO,
+	    goog.editor.Command.UNORDERED_LIST,
+	    goog.editor.Command.ORDERED_LIST,
+	    goog.editor.Command.JUSTIFY_LEFT,
+	    goog.editor.Command.JUSTIFY_CENTER,
+	    goog.editor.Command.JUSTIFY_RIGHT,
+	    goog.editor.Command.SUBSCRIPT,
+	    goog.editor.Command.SUPERSCRIPT,
+	    goog.editor.Command.STRIKE_THROUGH,
+	    goog.editor.Command.IMAGE,
+	    goog.editor.Command.REMOVE_FORMAT
+    ];
+
+If you are using the built-in Image button from Google, then make this change in CLOSURE_HOME/goog/editor/command.js:
+
+goog.editor.Command = {
+.
+.
+.
+.
+IMAGE: 'ImageDialog'
+}
+
+If the bubble is not removed on making the field uneditable, call this (by listening to goog.editor.Field.EventType.DELAYEDCHANGE/CHANGE):
+		goog.editor.plugins.HelloWorld.removeAllBubbles(); 
+to remove any instances.
+
+TODO: Remove goog.ui.Bubble and use LinkBubble from closure-rev157.
+Do not forget to calculate the dependencies.
