@@ -79,7 +79,10 @@ goog.editor.plugins.ImageDialogPlugin.prototype.handleOk_ = function(e) {
 	
 	// Grab the url of the image off of the event.
 	image.src = e.message;
-	
+
+    // Set empty "alt" attribute.
+    image.alt = '';
+
 	// We want to insert the image in place of the user's selection.
 	// So we restore it first, and then use it for insertion.
 	this.restoreOriginalSelection();

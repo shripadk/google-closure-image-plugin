@@ -118,7 +118,7 @@ goog.editor.plugins.ImageDialog.prototype.createContent_ = function() {
       {size: 25, value: MSG_IMAGE_PLUGIN_DIALOG_SAMPLE});
   /** @desc Prompt telling the user to enter a Image URL. */
   var MSG_IMAGE_PLUGIN_DIALOG_PROMPT =
-      goog.getMsg('Enter the url to the image');
+      goog.getMsg('Enter the URL to the image');
   return this.dom.$dom(goog.dom.TagName.DIV,
                        null,
                        [MSG_IMAGE_PLUGIN_DIALOG_PROMPT, this.input_]);
